@@ -1,0 +1,128 @@
+body 
+{
+	margin: 0;
+	text-align: center;
+}
+
+canvas
+{
+	opacity: 0.075;
+	-webkit-transition: opacity 0.2s ease-in-out; /* For Safari 2.1 to 6.0 */
+    transition: opacity 0.2s ease-in-out;
+}
+canvas.loud 
+{
+	opacity: 0.3;
+}
+
+.container
+{
+	position: absolute;
+	top: calc(50% - 238px);
+	left: calc(50% - 200px);
+
+	width: 400px;
+	height: 442px;
+
+	background-color: rgba(0,0,0,0.1);
+	box-shadow: 4px 4px 8px #ccc;
+
+}
+
+#gif-bucket
+{
+	position: relative;
+	margin: 0 auto;
+	width: 300px;
+	height: 300px;
+
+	top: 50px;
+	background-color: rgba(255,255,255,0.02);
+	background-size: cover;
+	opacity: 1;
+	-webkit-transform: scale3d(1,1,1);
+
+	-webkit-transition: opacity 0.3s ease-in-out; /* For Safari 2.1 to 6.0 */
+    transition: opacity 0.3s ease-in-out;
+}
+#gif-bucket.loading
+{
+	opacity: 0;
+}
+
+#noresults
+{
+	position: absolute;
+	top: calc(220px - 1em);
+	left: 50px;
+	margin: 0 auto;
+	width: 300px;
+	height: 300px;
+
+	opacity: 0;
+
+	font-size: 1em;
+	text-align: center;
+	color: #fff;
+
+	-webkit-transition: opacity 0.2s ease-in-out; /* For Safari 2.1 to 6.0 */
+    transition: opacity 0.2s ease-in-out;
+}
+#noresults.active
+{
+	opacity: 1;
+}
+
+
+form
+{
+	position: relative;
+	z-index: 1;
+	margin: 0 auto;
+}
+input[type="text"]
+{
+	position: absolute;
+	top: 400px;
+	left: 0;	
+	width: 400px;
+
+	line-height: 38px;
+	font-size: 1.2em;
+	text-align: center;
+
+	color: #fff;
+	background-color: rgba(255,255,255,0.2);
+
+	border: 1px solid transparent;
+	border-top: 1px dashed rgba(255,255,255,0.3);
+
+	-webkit-transition: background-color 0.25s ease-in-out; /* For Safari 3.1 to 6.0 */
+    transition: background-color 0.25s ease-in-out;
+}
+
+input[type="text"]:focus
+{
+	background-color: rgba(255,255,255,0.3);
+	outline: none;
+}
+input[type="text"]::-webkit-input-placeholder {
+   color: #fff;
+}
+
+input[type="text"]:-moz-placeholder { /* Firefox 18- */
+   color: #fff;  
+}
+
+input[type="text"]::-moz-placeholder {  /* Firefox 19+ */
+   color: #fff;  
+}
+
+input[type="text"]:-ms-input-placeholder {  
+   color: #fff;  
+}
+
+input[type="submit"]
+{
+	display: none;
+}

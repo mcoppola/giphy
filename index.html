@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="style.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	</head>
+	<body>
+		<canvas id='canvas'></canvas>
+	    <script src="utils.js"></script>
+	    <script src="trippy.js"></script>
+	    <script src="giphy.js"></script>
+
+	    <script>
+    	window.onload = function () {
+	        var canvas = document.getElementById('canvas');
+	        canvas.width = window.innerWidth;
+	        canvas.height = window.innerHeight;
+	        var context = canvas.getContext('2d');
+	        var bg = new Trippy(context, canvas.width, canvas.height);
+
+
+			$(function(){
+			  $input = $('#input');
+			  $bucket = $('#gif-bucket');
+			  $canvas = $('#canvas');
+			  $noresults = $('#noresults');
+
+			    function noResults() {
+					$canvas.removeClass('loud');
+					$noresults.addClass('active');
+				}
+				function indicateLoading() {
+					$canvas.addClass('loud');
+				    $bucket.addClass('loading');
+				    $noresults.removeClass('active');
+				}
+
+
+			    $('#search').submit(function(e) {
+				    e.preventDefault();
+				    indicateLoading();
+
+				   
+				    // PROMIES !
+			    	searchForGif( $input.val() )
+
+				    	.then( loadGif )
+
+			    		.catch( function(error) {
+
+					    	noResults();
+					      	console.error("Failed!", error);
+			  		});
+				});
+
+
+			});
+
+			(function drawFrame () {
+			   utils.getAnimationFrame();
+			   window.requestAnimationFrame(drawFrame, canvas);
+			 
+			   bg.update();
+			}());
+	    };
+	    </script>
+
+	    <div class="container">
+	    	<form id="search" action="" autocomplete="off">
+	    		<input id="input" type="text" placeholder="search gifs">
+	    		<input type="submit" value="">
+	    	</form>
+	    	<div id='gif-bucket'></div>
+	    	<div id="noresults">no results</div>
+	    </div>
+	</body>
+</html>
